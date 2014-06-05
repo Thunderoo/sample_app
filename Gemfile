@@ -24,6 +24,7 @@ group :test do
 
   gem 'libnotify', '0.8.0'
 
+  gem 'factory_girl_rails', '4.2.1'
 end
 
 # Use SCSS for stylesheets
