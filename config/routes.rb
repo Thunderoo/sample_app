@@ -1,7 +1,12 @@
 SampleApp::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   root 'static_pages#home'
   match '/help', to: 'static_pages#help', via: 'get'
@@ -23,7 +28,7 @@ SampleApp::Application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
+  # Example resource route (maps HTTP verbs to controllers actions automatically):
   #   resources :products
 
   # Example resource route with options:
