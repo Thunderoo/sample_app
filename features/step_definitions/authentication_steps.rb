@@ -11,7 +11,7 @@ Then /^they should see an error message$/ do
 end
 
 Given /^the user has an account$/ do
-  @user = User.create(name: "Example User", email: "user@example.com",
+  @user = User.create(username: "Example User", email: "user@example.com",
                       password: "foobar", password_confirmation: "foobar")
 end
 
@@ -22,7 +22,7 @@ When /^the user submits valid signin information$/ do
 end
 
 Then /^they should see their profile page$/ do
-  expect(page).to have_title(@user.name)
+  expect(page).to have_title(@user.username)
 end
 
 Then /^they should see a signout link$/ do
