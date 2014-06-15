@@ -14,4 +14,17 @@ FactoryGirl.define do
     content "Lorem ipsum"
     user
   end
+
+  factory :forum do
+    sequence(:name) { |n| "Forum #{n}" }
+    sequence(:subname) { |n| "This is forum #{n}" }
+    creator "Foo"
+  end
+
+  factory :post do
+    content "Lorem ipsum"
+    title "Foo"
+    user_id 1
+    forum
+  end
 end

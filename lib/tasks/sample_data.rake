@@ -4,11 +4,12 @@ namespace :db do
     make_users
     make_microposts
     make_relationships
+    make_forums
   end
 end
 
 def make_users
-  User.create!( name: "Example User",
+  User.create!( username: "Example User",
                email: "example@railstutorial.org",
                password: "foobar",
                password_confirmation: "foobar",
@@ -17,7 +18,7 @@ def make_users
     name = Faker::Name.name
     email = "Example-#{n+1}@railstutorial.org"
     password = "password"
-    User.create!(name: name,
+    User.create!(username: name,
                  email: email,
                  password:password,
                  password_confirmation: password)
@@ -39,4 +40,10 @@ def make_relationships
   followers = users [3..50]
   followed_users.each { |followed| user.follow!(followed) }
   followers.each { |follower| follower.follow!(user) }
+end
+
+def make_forums
+  Forum.create!( name: "Main discussion",
+                subname: "All discussion about development of the game",
+                creator: "Chris Forbes")
 end

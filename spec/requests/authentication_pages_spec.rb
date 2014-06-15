@@ -29,6 +29,7 @@ describe "Authentication" do
       before { sign_in user }
 
       it { should have_title(user.username) }
+      it { should have_link('Forum', href: forums_path) }
       it { should have_link('Users', href: users_path) }
       it { should have_link('Profile', href: user_path(user)) }
       it { should have_link('Settings', href: edit_user_path(user)) }
@@ -38,6 +39,7 @@ describe "Authentication" do
       describe "followed by signout" do
         before { click_link "Sign out" }
         it { should have_link('Sign in') }
+        it { should_not have_link('Forum', href: forums_path) }
         it { should_not have_link('Users', href: users_path) }
         it { should_not have_link('Profile', href: user_path(user)) }
         it { should_not have_link('Settings', href: edit_user_path(user)) }

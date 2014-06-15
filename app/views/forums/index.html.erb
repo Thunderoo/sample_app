@@ -1,0 +1,10 @@
+<% provide(:title, 'Forum index') %>
+<h1>All forums</h1>
+
+<%= will_paginate %>
+
+<ul class="forums">
+  <%= render @forums %>
+</ul>
+
+<%= will_paginate %>
