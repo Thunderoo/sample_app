@@ -38,4 +38,6 @@ class PostsController < ApplicationController
     @post = current_forum.posts.find_by(id: params[:id])
     redirect_to forums_path(current_forum) if @post.nil?
   end
+
+
 end

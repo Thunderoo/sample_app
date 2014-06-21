@@ -1,5 +1,6 @@
 <li>
-  <%= link_to post.title, post %>
+  <span class="title"><%= link_to post.title, post %></span>
+  <span class="user">Created by <%= link_to User.find(post.user_id).username, User.find(post.user_id) %></span>
   <% if current_user.admin? %>
       | <%= link_to "delete", user, method: :delete,
                     data: { confirm: "You sure?" } %>

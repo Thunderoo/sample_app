@@ -3,9 +3,39 @@
   <div class="span8">
     <% if @forum.posts.any? %>
         <h3><%= link_to "Forums", forums_path%> - <%= link_to @forum.name, @forum %></h3>
-        <ol class="posts">
-          <%= render @posts %>
-        </ol>
+        <%= will_paginate @posts %>
+        <table class="postTable">
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Latest reply</th>
+            <th>Replies</th>
+          </tr>
+
+          <% @posts.each do |post| %>
+          <tr>
+            <td></td>
+            <td>
+              <span class="postTitle"><%= link_to post.title, post %></span>
+              <span class="postCreator">
+                Created by <%= link_to User.find(post.user_id).username, User.find(post.user_id) %>
+              </span>
+            </td>
+            <td>
+              <% if hasReplies(post) %>
+                <% last_reply = lastReply(post) %>
+                <span class="lastReplyLink"><%= last_reply.created_at %> </span>
+                <span class="lastReplyUser"><%= User.find(last_reply.user_id).username %></span>
+              <% else %>
+                No replies
+              <% end %>
+            </td>
+            <td style="text-align:center;">
+              <%= post.replies.count + 1%>
+            </td>
+          </tr>
+          <% end %>
+        </table>
         <%= will_paginate @posts %>
         <%= render 'shared/post_form' %>
     <% end %>

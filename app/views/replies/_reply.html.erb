@@ -1,7 +1,15 @@
-<li>
-  <%= reply.content %>
-  <% if current_user.admin? %>
-      | <%= link_to "delete", user, method: :delete,
-                    data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+<div class="contentContainer">
+  <% user = User.find(reply.user_id) %>
+  <%= link_to gravatar_for(user), user %>
+  <span class="user">
+    <%= link_to user.username, user %>
+  </span>
+  <div class="reply_content">
+    <div class="reply_content_options">
+      <%= reply.created_at %>
+    </div>
+    <div class="reply_content_content">
+      <%= wrap(reply.content) %>
+    </div>
+  </div>
+</div>

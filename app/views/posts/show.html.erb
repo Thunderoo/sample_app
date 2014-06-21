@@ -1,14 +1,30 @@
 <% provide(:title, @forum.name) %>
 <div class = "row">
   <div class="span8">
-    <h3><%= link_to "Forums", forums_path%> - <%= link_to @forum.name, @forum %> - <%= @post.title %></h3>
-    <li><%= @post.content %></li>
-    <% if @post.replies.any? %>
-      <ol class="replies">
-        <%= render @replies %>
-      </ol>
-      <%= will_paginate @replies %>
-    <% end %>
+    <div class="replyList">
+      <h3><%= link_to "Forums", forums_path%> - <%= link_to @forum.name, @forum %> - <%= @post.title %></h3>
+      <div class="contentContainer">
+        <%= link_to gravatar_for(@op_user), @op_user %>
+        <span class="user">
+          <%= link_to @op_user.username, @op_user %>
+        </span>
+        <div class="reply_content">
+          <div class="reply_content_options">
+            <%= @post.created_at %>
+          </div>
+          <div class="reply_content_content">
+            <%= wrap(@post.content) %>
+          </div>
+        </div>
+      </div>
+      <% if @post.replies.any? %>
+
+            <%= render @replies %>
+          </div>
+          <%= will_paginate @replies %>
+      <% end %>
+    </div>
+
     <%= render 'shared/reply_form' %>
   </div>
 </div>

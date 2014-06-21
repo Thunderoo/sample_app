@@ -235,3 +235,38 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+.postTable {
+  width: 500px;
+
+  table, th, td {
+    border: 1px solid black;
+  }
+  td {
+    padding: 15px;
+  }
+  span {
+    display: block;
+  }
+  .postCreator {
+    color: $grayLight;
+    font-size: 0.8em;
+  }
+  .postTitle {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+}
+
+.postContentField {
+  margin-top: 20px;
+}
+
+.contentContainer {
+  margin-bottom: 20px;
+
+  .reply_content_options {
+    color: $grayLight;
+    font-size: 0.8em;
+  }
+}
