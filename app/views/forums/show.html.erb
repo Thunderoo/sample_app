@@ -1,0 +1,13 @@
+<% provide(:title, @forum.name) %>
+<div class = "row">
+  <div class="span8">
+    <% if @forum.posts.any? %>
+        <h3><%= link_to "Forums", forums_path%> - <%= link_to @forum.name, @forum %></h3>
+        <ol class="posts">
+          <%= render @posts %>
+        </ol>
+        <%= will_paginate @posts %>
+        <%= render 'shared/post_form' %>
+    <% end %>
+  </div>
+</div>

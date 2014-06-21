@@ -7,7 +7,8 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
-    @threads = @user.posts.paginate(page: params[:page])
+    @posts = @forum.posts.paginate(page: params[:page])
+    @post = @forum.posts.build
   end
 
   def destroy

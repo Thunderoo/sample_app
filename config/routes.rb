@@ -8,7 +8,7 @@ SampleApp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :forums
-  resources :threads
+  resources :posts
   resources :replies
 
   root 'static_pages#home'

@@ -1,0 +1,10 @@
+<%= form_for(@post.replies.build(user_id: current_user.id, post_id: @post.id)) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div><%= f.hidden_field :user_id %></div>
+    <div><%= f.hidden_field :post_id %></div>
+
+    <div class = "field">
+      <%= f.text_area :content, placeholder: "Compose new reply..." %>
+    </div>
+    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

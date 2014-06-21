@@ -1,0 +1,10 @@
+<%= form_for(@forum.posts.build(user_id: current_user.id, forum_id: @forum.id)) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div><%= f.hidden_field :user_id %></div>
+    <div><%= f.hidden_field :forum_id %></div>
+    <div class = "content field">
+      <%= f.text_area :title %>
+      <%= f.text_area :content, placeholder: "Compose new post..." %>
+    </div>
+    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

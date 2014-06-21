@@ -5,6 +5,8 @@ namespace :db do
     make_microposts
     make_relationships
     make_forums
+    make_posts
+    make_replies
   end
 end
 
@@ -46,4 +48,16 @@ def make_forums
   Forum.create!( name: "Main discussion",
                 subname: "All discussion about development of the game",
                 creator: "Chris Forbes")
+end
+
+def make_posts
+  forum = Forum.all.first
+  user = User.all.first
+  forum.posts.create!(title: "first post", content: "Lorem Ipsum", user_id: user.id)
+end
+
+def make_replies
+  post = Post.all.first
+  user = User.all.second
+  post.replies.create!(content: "OP is a fag", user_id: user.id)
 end
