@@ -1,8 +1,4 @@
 <li>
   <%= link_to forum.name, forum %>
   <%= forum.subname %>
-  <% if current_user.admin? %>
-      | <%= link_to "delete", user, method: :delete,
-                    data: { confirm: "You sure?" } %>
-  <% end %>
 </li>
