@@ -13,7 +13,7 @@
             <%= @post.created_at %>
           </div>
           <div class="reply_content_content">
-            <%= wrap(@post.content) %>
+            <%= wrap(@post.content).html_safe %>
           </div>
         </div>
       </div>

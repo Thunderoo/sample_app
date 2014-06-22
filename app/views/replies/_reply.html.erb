@@ -9,7 +9,7 @@
       <%= reply.created_at %>
     </div>
     <div class="reply_content_content">
-      <%= wrap(reply.content) %>
+      <%= wrap(reply.content).html_safe %>
     </div>
   </div>
 </div>

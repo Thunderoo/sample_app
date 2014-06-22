@@ -1,13 +1,15 @@
+<%= tinymce_assets %>
 <%= form_for(@forum.posts.build(user_id: current_user.id, forum_id: @forum.id)) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div><%= f.hidden_field :user_id %></div>
     <div><%= f.hidden_field :forum_id %></div>
     <div class = "postContentField">
       <%= f.label :title %>
-      <%= f.text_area :title, placeholder: "Post title"%>
+      <%= f.text_area :title%>
 
       <%= f.label :content %>
-      <%= f.text_area :content, placeholder: "Post content" %>
+      <%= f.text_area :content, class: "tinymce", :rows => 10, :columns => 120%>
     </div>
     <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
+<%= tinymce %>
