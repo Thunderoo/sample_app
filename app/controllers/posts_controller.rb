@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    forum = Forum.all.find_by(params[:post][:forum_id])
+    forum = Forum.all.find(params[:post][:forum_id])
     @post = forum.posts.build(post_params)
     if @post.save
       flash[:success] = "Post created!"
